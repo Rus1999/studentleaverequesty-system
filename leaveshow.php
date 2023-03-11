@@ -18,7 +18,7 @@
         <td>John</td>
         <td>Doe</td>
         <td>john@example.com</td>
-        <td>SCISO</td>
+        <td>ITBI</td>
         <td><button type="button" class="btn btn-info">Info</button></td>
         <td>Denied</td>
       </tr>
@@ -26,7 +26,7 @@
         <td>July</td>
         <td>Dooley</td>
         <td>july@example.com</td>
-        <td>SCISO</td>
+        <td>LGT</td>
         <td><button type="button" class="btn btn-info">Info</button></td>
         <td>Approved</td>
       </tr>
@@ -34,7 +34,7 @@
         <td>July</td>
         <td>Dooley</td>
         <td>july@example.com</td>
-        <td>SCISO</td>
+        <td>HRM</td>
         <td><button type="button" class="btn btn-info">Info</button></td>
         <td>Approved</td>
       </tr>

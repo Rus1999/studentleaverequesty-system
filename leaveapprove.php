@@ -10,7 +10,7 @@
         <th>Email</th>
         <th>Major</th>
         <th>Details</th>
-        <th class="text-center">Manage</th>
+        <th>Manage</th>
       </tr>
     </thead>
     <tbody>
