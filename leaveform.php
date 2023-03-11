@@ -6,61 +6,92 @@
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Student's Leave Form (student only)</h3>
-        <form>
-            <!-- Name input -->
-            <div class="form-outline mb-4">
-              <input type="text" id="form4Example1" class="form-control" />
-              <label class="form-label" for="form4Example1">Title</label>
-            </div>
-          
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form4Example2" class="form-control" />
-              <label class="form-label" for="form4Example2">Email address</label>
-            </div>
-          
-            <!-- Message input -->
-            <div class="form-outline mb-4">
-              <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-              <label class="form-label" for="form4Example3">Why?</label>
+          <form action="./leaveform_pro.php">
+              <!-- leave type -->
+              <div class="col-md-6 mb-4">
+              <h6 class="mb-2 pb-1">Leave Type: </h6>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="leaveType" type="radio" name="inlineRadioOptions" id="Business"
+                  value="option1" checked required/>
+                <label class="form-check-label" for="Business">Business Leave</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input"  name="leaveType" type="radio" name="inlineRadioOptions" id="Sick"
+                  value="option2" required/>
+                <label class="form-check-label" for="Sick">Sick Leave</label>
+              </div>
             </div>
 
-              <div class="form-outline mb-4">
-                <input type="email" id="form4Example2" class="form-control" />
-                <label class="form-label" for="form4Example2">Option sick or bussiness leave</label>
-              </div>
+            <!-- title and reason -->
+            <div class="form-outline mb-4">
+              <input type="text" name="title" id="title" class="form-control" required/>
+              <label class="form-label" for="title">Title</label>
+            </div>
+            
+            <div class="form-outline mb-4">
+              <textarea class="form-control" name="reason" id="reason" rows="4" required></textarea>
+              <label class="form-label" for="reason">Reason</label>
+            </div>
 
-              <div class="form-outline mb-4">
-                <input type="email" id="form4Example2" class="form-control" />
-                <label class="form-label" for="form4Example2">from this date</label>
+            <!-- date -->
+            <?php 
+              $today = date('Y-m-d');
+              $endDate = date('Y-m-d',strtotime("+2 months"));
+              
+            ?>
+            <div class="row">
+              <div class="col-md-6 mb-2 pb-2">
+                <div class="form-outline">
+                  <input type="date" name="startDate" id="startDate" class="form-control" 
+                        min="<?php echo $today ?>" max="<?php echo $endDate ?>"
+                        required />
+                  <label class="form-label" for="startDate">From this date</label>
+                </div>
               </div>
-
-              <div class="form-outline mb-4">
-                <input type="email" id="form4Example2" class="form-control" />
-                <label class="form-label" for="form4Example2">to this date</label>
+              <div class="col-md-6 mb-2 pb-2">
+                <div class="form-outline">
+                  <input type="date" name="endDate" id="endDate" class="form-control" 
+                        min="<?php echo $today ?>" max="<?php echo $endDate ?>"
+                        required/>
+                  <label class="form-label" for="endDate">To this date</label>
+                </div>
               </div>
+            </div>
           
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
-              <label class="form-check-label" for="form4Example4">
+              <input class="form-check-input me-2" type="checkbox" id="truthfulness" required/>
+              <label class="form-check-label" for="truthfulness">
                 I'm affirm that data above is the truth.
               </label>
             </div>
           
             <!-- Submit button -->
             <div class="d-grid gap-2 mx-auto mt-4 mb-3">
-              <input class="btn btn-primary btn-md" type="submit" value="Submit" />
+              <input class="btn btn-primary btn-md" type="submit" value="Submit" onclick="compareDate()"/>
             </div>
             <div class="d-grid gap-2 mx-auto mb-4">
-              <input class="btn btn-secondary btn-sm" type="submit" value="Clear" />
+              <input class="btn btn-secondary btn-sm" type="reset" value="Clear" />
             </div>
           </form>
-    </div>
-    </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  // listening when startDate is picked
+  document.getElementById("startDate").addEventListener("change", function() {
+    var input = this.value;
+    var dateEntered = new Date(input);
+    console.log(input); //e.g. 2015-11-13
+    console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+
+    // set minDate of Endtime
+    var endDate = document.getElementById("endDate");
+    endDate.setAttribute("min", input);
+});
+</script>
 
 <?php include("./footer.php")?>

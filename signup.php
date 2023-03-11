@@ -6,116 +6,94 @@
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-          <form>
-            
+          <form action="./signup_pro.php">
+            <!-- firstname lastname -->
             <div class="row">
               <div class="col-md-6 mb-2">
-
                 <div class="form-outline">
-                  <input type="text" id="firstName" class="form-control form-control-md" />
+                  <input type="text" name="fname" id="firstName" class="form-control form-control-md" required/>
                   <label class="form-label" for="firstName">First Name</label>
                 </div>
-
               </div>
               <div class="col-md-6 mb-2">
-
                 <div class="form-outline">
-                  <input type="text" id="lastName" class="form-control form-control-md" />
+                  <input type="text" name="lname" id="lastName" class="form-control form-control-md" required/>
                   <label class="form-label" for="lastName">Last Name</label>
                 </div>
-
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                <div class="form-outline datepicker w-100">
-                  <input type="text" class="form-control form-control-md" id="birthdayDate" />
-                  <label for="birthdayDate" class="form-label">Birthday</label>
-                </div>
-
-              </div>
-              <div class="col-md-6 mb-4">
-
-                <h6 class="mb-2 pb-1">Gender: </h6>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                    value="option1" checked />
-                  <label class="form-check-label" for="femaleGender">Female</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                    value="option2" />
-                  <label class="form-check-label" for="maleGender">Male</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                    value="option3" />
-                  <label class="form-check-label" for="otherGender">Other</label>
-                </div>
-
-              </div>
-            </div>
-
+            <!-- email phonenumber -->
             <div class="row">
               <div class="col-md-6 mb-2 pb-2">
-
                 <div class="form-outline">
-                  <input type="email" id="emailAddress" class="form-control form-control-md" />
+                  <input type="email" name="email" id="emailAddress" class="form-control form-control-md" required/>
                   <label class="form-label" for="emailAddress">Email</label>
                 </div>
-
               </div>
               <div class="col-md-6 mb-2 pb-2">
-
                 <div class="form-outline">
-                  <input type="tel" id="phoneNumber" class="form-control form-control-md" />
+                  <input type="tel" name="phone" id="phoneNumber" class="form-control form-control-md" pattern="[0-9]{10}" title="Tenth digits of phone number" required/>
                   <label class="form-label" for="phoneNumber">Phone Number</label>
                 </div>
-
-              </div>
-
-              <div class="col-md-6 mb-2 pb-2">
-
-                <div class="form-outline">
-                  <input type="password" id="password" class="form-control form-control-md" />
-                  <label class="form-label" for="phoneNumber">Password</label>
-                </div>
-
-              </div>
-              <div class="col-md-6 mb-2 pb-2">
-
-                <div class="form-outline">
-                  <input type="password" id="confirmpassword" class="form-control form-control-md" />
-                  <label class="form-label" for="phoneNumber">Confirm Password</label>
-                </div>
-
               </div>
             </div>
 
+            <!-- username -->
+            <div class="row">
+              <div class="col-md-6 mb-2 pb-2">
+                <div class="form-outline">
+                  <input type="text" name="username" id="username" class="form-control form-control-md"  required/>
+                  <label for="username" class="form-label">Username</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-2 pb-2">
+                <div class="form-outline">
+                  <input type="password" name="password" id="password" class="form-control form-control-md" required/>
+                  <label class="form-label" for="phoneNumber">Password</label>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                  <input class="form-check-input" type="checkbox" id="check1" onclick="showPassword()">
+                  <label class="form-check-label">Show Password</label>
+                </div>
+              </div>
+            </div>
             
-        <div class="form-check d-flex justify-content-center mb-3">
-            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-            <label class="form-check-label" for="form2Example3g">
-              I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-            </label>
-          </div>
-          
-            <div class="d-grid gap-2 mx-auto mt-4 mb-4">
+            <!-- terms of service -->
+            <div class="form-check d-flex justify-content-center mb-3">
+              <input class="form-check-input me-2" type="checkbox" id="form2Example3cg" required/>
+              <label class="form-check-label" for="form2Example3g">
+                I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+              </label>
+            </div>
+
+            <!-- submit button -->
+            <div class="d-grid gap-2 mx-auto mt-4 mb-3">
               <input class="btn btn-primary btn-md" type="submit" value="Submit" />
             </div>
+            <div class="d-grid gap-2 mx-auto mb-4">
+              <input class="btn btn-secondary btn-sm" type="reset" value="Clear" />
+            </div>
 
-            <p class="text-center text-muted mb-0">Have already an account? <a href="#!"
+            <!-- create account -->
+            <p class="text-center text-muted mb-0">Have already an account? <a href="./login.php"
                 class="fw-bold text-body"><u>Login here</u></a></p>
+
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+function showPassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 
 <?php include("./footer.php")?>

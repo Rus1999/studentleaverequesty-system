@@ -9,25 +9,25 @@
           <form action="/action_page.php">
             <div class="mb-2">
               <div class="form-outline">
-                <input type="text" id="email" class="form-control form-control-md">
-                <label class="form-label" for="email">Email</label>
+                <input type="text" name="emailUsername"id="email" class="form-control form-control-md" required>
+                <label class="form-label" for="email">Email/Username</label>
               </div>
             </div>
             <div class="mb-2">
               <div class="form-outline">
-                <input type="password" id="pwd" class="form-control form-control-md">
+                <input type="password" name="password" id="pwd" class="form-control form-control-md" required>
                 <label class="form-label" for="pwd">Password</label>
               </div>
             </div>
-            <div class="form-check mb-3">
+            <!-- <div class="form-check mb-3">
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="remember"> Remember me
               </label>
-            </div>
+            </div> -->
             <div class="d-grid gap-2 mx-auto mt-4 mb-4">
               <input class="btn btn-primary btn-md" type="submit" value="Login" />
             </div>
-            <p class="text-center text-muted mb-0">Don't have an account? <a href="#!"
+            <p class="text-center text-muted mb-0">Don't have an account? <a href="./signup.php"
                 class="fw-bold text-body"><u>Signup here</u></a></p>
             </form>
         </div>
