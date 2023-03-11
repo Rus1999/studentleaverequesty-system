@@ -9,7 +9,7 @@
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-          <form action="./signup_pro.php">
+          <form action="./signup_pro.php" method="post">
             <!-- firstname lastname -->
             <div class="row">
               <div class="col-md-6 mb-2">
@@ -89,14 +89,18 @@
 </div>
 
 <script>
-function showPassword() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
+  function showPassword() 
+  {
+    var x = document.getElementById("password");
+    if (x.type === "password") 
+    {
+      x.type = "text";
+    } 
+    else 
+    {
+      x.type = "password";
+    }
   }
-}
 </script>
 
 <?php include("./footer.php")?>

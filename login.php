@@ -1,6 +1,24 @@
 <?php 
   include("./connect.php");
   include("./header.php");
+
+  if(isset($_GET['error']))
+  {
+    if($_GET['error'] == 'PasswordNotMatch')
+    {
+      echo '<div class="alert alert-danger alert-dismissible">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <strong>Login Fail!</strong> Password Not Match.
+            </div>';
+    }
+    else if ($_GET['error'] == 'UserEmailNotFound')
+    {
+      echo '<div class="alert alert-danger alert-dismissible">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <strong>Login Fail!</strong> User account or Email address not match.
+            </div>';
+    }
+  }
 ?>
 
 <div class="container py-5 h-100">
@@ -38,5 +56,6 @@
     </div>
   </div>
 </div>
+
 
 <?php include("./footer.php") ?>
