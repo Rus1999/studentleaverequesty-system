@@ -1,4 +1,7 @@
-<?php include("./header.php")?>
+<?php 
+  include("./connect.php");
+  include("./header.php");
+?>
 
 <div class="container pt-3 pb-3">
   <h2>Student's Leave List (Owner's only)</h2>           

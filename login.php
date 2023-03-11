@@ -1,4 +1,7 @@
-<?php include("./header.php") ?>
+<?php 
+  include("./connect.php");
+  include("./header.php");
+?>
 
 <div class="container py-5 h-100">
   <div class="row justify-content-center align-items-center h-100">
@@ -6,11 +9,11 @@
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login</h3>
-          <form action="/action_page.php">
+          <form action="./login_pro.php" method="post">
             <div class="mb-2">
               <div class="form-outline">
-                <input type="text" name="emailUsername"id="email" class="form-control form-control-md" required>
-                <label class="form-label" for="email">Email/Username</label>
+                <input type="text" name="usernameemail" id="usernameemail" class="form-control form-control-md" required>
+                <label class="form-label" for="usernameemail">Username/Email</label>
               </div>
             </div>
             <div class="mb-2">

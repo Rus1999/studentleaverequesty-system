@@ -27,24 +27,42 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <!-- Admin -->
-                    <li class="nav-item"> 
-                        <a class="nav-link" href="./leaveshow.php">Leave List</a>
-                    </li>
-                    <li class="nav-item"> 
-                        <a class="nav-link" href="./leaveapprove.php">Approve Leave</a>
-                    </li>
-                    <!-- User -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./leaveform.php">Leave Form</a>
-                    </li>
-                    <!-- Guest -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./signup.php">Signup</a>
-                    </li>
+                    <!-- check login -->
+                    <?php
+                        if (isset($_SESSION['user_status']))
+                        {
+                            echo '<span class="navbar-text text-white">'.$_SESSION['user_username'].'</span>';
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="./logout.php">Logout</a>
+                                </li>';
+                            echo '<span class="navbar-text text-white">|</span>';
+
+                            if ($_SESSION['user_status'] == 0)
+                            {
+                                echo '<li class="nav-item"> 
+                                        <a class="nav-link" href="./leaveapprove.php">Approve Leave</a>
+                                    </li>';
+                            }
+                            else if ($_SESSION['user_status'] == 1)
+                            {
+                                echo '<li class="nav-item"> 
+                                        <a class="nav-link" href="./leaveshow.php">Leave List</a>
+                                    </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="./leaveform.php">Leave Form</a>
+                                    </li>';
+                            }
+                        }
+                        else
+                        {
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="./login.php">Login</a>
+                                </li>';
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="./signup.php">Signup</a>
+                                </li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div> 
