@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="imgs/donkey.png">
-    <title>Student Leave System - ระบบขออนุญาตหยุดเรียน</title>
-</head>
-<body>
-    <div class="container pt-5 bg-dark text-white">
+<?php include("./header.php")?>
+
+<div class="container py-5 h-100">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-12 col-lg-9 col-xl-7">
+      <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Student's Leave Form (student only)</h3>
         <form>
             <!-- Name input -->
             <div class="form-outline mb-4">
@@ -49,13 +44,23 @@
             <div class="form-check d-flex justify-content-center mb-4">
               <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
               <label class="form-check-label" for="form4Example4">
-                I'm confidence that data above is the truth.
+                I'm affirm that data above is the truth.
               </label>
             </div>
           
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+            <div class="d-grid gap-2 mx-auto mt-4 mb-3">
+              <input class="btn btn-primary btn-md" type="submit" value="Submit" />
+            </div>
+            <div class="d-grid gap-2 mx-auto mb-4">
+              <input class="btn btn-secondary btn-sm" type="submit" value="Clear" />
+            </div>
           </form>
     </div>
-</body>
-</html>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php include("./footer.php")?>
