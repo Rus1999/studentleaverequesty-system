@@ -12,7 +12,7 @@ create table StudentLeave(
     leave_picture varchar(100) null,
     leave_member_id int(10) not null,
     leave_admin_id int(10) null,
-    leave_status int(1) not null comment '0: unapprove, 1: approved'
+    leave_status int(1) not null comment '0: denined, 1: approved'
 );
 
 create table Users(

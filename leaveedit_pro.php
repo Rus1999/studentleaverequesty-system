@@ -1,7 +1,7 @@
 <?php
     include("./connect.php");
 
-
+    $leave_id = $_POST['leave_id'];
     $leave_type = $_POST['leaveType'];
     $leave_title = $_POST['title'];
     $leave_reason = $_POST['reason'];
@@ -36,10 +36,23 @@
         move_uploaded_file($leave_picture_name_temp, $uploadfile_path);
     }
 
-    $sql = "insert into studentleave values(null, '$leave_title', '$leave_reason', '$leave_type', '$leave_startDate', '$leave_endDate', '$uploadfile_path', $user_id, null, 2);";
+
+    $sql = "
+            update studentleave set 
+            leave_title = '$leave_title',
+            leave_reason = '$leave_reason',
+            leave_type = $leave_type,
+            leave_startDate = '$leave_startDate',
+            leave_endDate = '$leave_endDate',
+            leave_picture = '$uploadfile_path'
+            where leave_id = $leave_id;
+        ";
+
+    echo $sql;
+
 
     $conn->query($sql);
 
     $conn->close();
 ?>
-<meta http-equiv="refresh" content="0; url=./leaveshow.php?msg=addsuccess">
+<meta http-equiv="refresh" content="0; url=./leaveshow.php?msg=editsuccess">

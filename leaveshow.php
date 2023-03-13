@@ -4,11 +4,25 @@
 
   if(isset($_GET['msg']))
   {
-    if($_GET['msg'] == 'success')
+    if($_GET['msg'] == 'addsuccess')
     {
       echo '<div class="alert alert-success alert-dismissible">
               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
               <strong>Leave added Success!</strong> wait for approving.
+            </div>';
+    }
+    else if($_GET['msg'] == 'editsuccess')
+    {
+      echo '<div class="alert alert-success alert-dismissible">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <strong>Leave edit Success!</strong> wait for approving.
+            </div>';
+    }
+    else if($_GET['msg'] == 'deletesuccess')
+    {
+      echo '<div class="alert alert-success alert-dismissible">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <strong>Leave delete Success!</strong>
             </div>';
     }
   }
@@ -21,7 +35,7 @@
 ?>
 
 <div class="container col-lg-6 pt-3 pb-3">
-  <h2>Student's Leave List (Owner's only)</h2>       
+  <h2><?php echo $_SESSION['user_username'] ?>'s Leave List</h2>       
   <div class="mt-2 mb-2">
     <a href="./leaveform.php">
       <button type="button" class="btn btn-success">Add new Leave</button>   
@@ -33,6 +47,7 @@
         <th>id</th>
         <th>Title</th>
         <th>Status</th>
+        <th>Details</th>
         <th>Manage</th>
       </tr>
     </thead>
@@ -70,6 +85,11 @@
             $leave_status_mes = "Approved";
             $status_color = "text-success";
           }
+          elseif ($leave_status == 2)
+          {
+            $leave_status_mes = "Waiting";
+            $status_color = "text-dark";
+          }
 
           if ($leave_type == 0)
           {
@@ -82,6 +102,7 @@
             $leave_type_sick_check = "checked";
           }
         
+          // leave table *******************************************
           echo "
               <tr>
                 <td>$leave_id</td>
@@ -89,18 +110,20 @@
                 <td class=$status_color>$leave_status_mes</td>
               ";
           
+
+          // leave information *************************************
           echo "
               <td>
-                <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#myModal_$leave_id'>
+                <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#info_$leave_id'>
                   Info
                 </button>
       
-                <div class='modal' id='myModal_$leave_id'>
+                <div class='modal' id='info_$leave_id'>
                   <div class='modal-dialog modal-xl'>
                     <div class='modal-content'>
       
                       <div class='modal-header'>
-                        <h4 class='modal-title'>$leave_title</h4>
+                        <h4 class='modal-title'>$leave_title (Information)</h4>
                         <button type='button' class='btn-close' data-bs-dismiss='modal'></button>
                       </div>
 
@@ -124,12 +147,12 @@
 
             <!-- title and reason -->
             <div class='form-outline mb-4'>
-              <input type='text' class='form-control' disabled/>
+              <input type='text' class='form-control' value='$leave_title' disabled/>
               <label class='form-label'>Title</label>
             </div>
             
             <div class='form-outline mb-4'>
-              <textarea class='form-control' rows='4' disabled></textarea>
+              <textarea class='form-control' rows='4' disabled>$leave_reason</textarea>
               <label class='form-label'>Reason</label>
             </div>
 
@@ -150,23 +173,8 @@
 
             <div class='mb-3 mt-4'>
               <label for='fileUpload' class='form-label'>Attach Picture</label>
-              <input class='form-control form-control-md' name='leave_picture' id='fileUpload' type='file' value='$leave_picture>
-            </div>
-          
-            <!-- Checkbox -->
-            <div class='form-check d-flex justify-content-center mb-4'>
-              <input class='form-check-input me-2' type='checkbox' id='truthfulness' required/>
-              <label class='form-check-label' for='truthfulness'>
-                I'm affirm that data above is the truth.
-              </label>
-            </div>
-          
-            <!-- Submit button -->
-            <div class='d-grid gap-2 mx-auto mt-4 mb-3'>
-              <input class='btn btn-primary btn-md' type='submit' value='Submit' onclick='compareDate()'/>
-            </div>
-            <div class='d-grid gap-2 mx-auto mb-4'>
-              <input class='btn btn-secondary btn-sm' type='reset' value='Clear' />
+              <br>
+              <img src='$leave_picture_path' class='rounded col-12 '>
             </div>
           </form>
           ";
@@ -181,14 +189,23 @@
                     </div>
                   </div>
                 </div>
-              </td>
               ";
-              
-                // <td>
-                //   <button type=\"button\" class=\"btn btn-info\">Info</button>
-                //   <button type=\"button\" class=\"btn btn-warning\">Edit</button>
-                //   <button type=\"button\" class=\"btn btn-danger\">Delete</button>
-                // </td>
+
+          if ($leave_status == 2)
+          {
+            // leave edit
+            echo "
+                  <td>
+                    <a href='leaveedit.php?leave_id=$leave_id' class='btn btn-warning btn-md' role='button'>Edit</a>
+                ";
+
+            // leave delete
+            echo "
+                    <a href='./leavedelete_pro.php?leave_id=$leave_id' class='btn btn-danger btn-md' role='button'>Delete</a>
+                  </td>
+                ";
+          }
+
         }
       ?>
 
@@ -199,3 +216,26 @@
 </div>
 
 <?php include("./footer.php")?>
+
+<script>
+  // listening when startDate is picked
+  document.getElementById("startDate").addEventListener("change", function() 
+  {
+    var input = this.value;
+    var dateEntered = new Date(input);
+    console.log(input); //e.g. 2015-11-13
+    console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+
+    // set minDate of Endtime
+    var endDate = document.getElementById("endDate");
+    endDate.setAttribute("min", input);
+  });
+
+  // function confirmDelete() 
+  // {
+  //   if (confirm("Do you want to delet this leave!") == true) 
+  //   {
+  //     window.location.href = "./leavedelete_pro.php";
+  //   }
+  // }
+</script>
