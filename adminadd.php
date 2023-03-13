@@ -8,8 +8,8 @@
     <div class="col-12 col-lg-9 col-xl-7">
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
-          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-          <form action="./signup_pro.php" method="post">
+          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Admin add Form</h3>
+          <form action="./adminadd_pro.php" method="post">
             <!-- firstname lastname -->
             <div class="row">
               <div class="col-md-6 mb-2">
@@ -56,17 +56,9 @@
                   <label class="form-label" for="phoneNumber">Password</label>
                   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                   <input class="form-check-input" type="checkbox" id="check1" onclick="showPassword()">
-                  <label class="form-check-label">Show Password</label>
+                  <label class="form-check-label" for="check1">Show Password</label>
                 </div>
               </div>
-            </div>
-            
-            <!-- terms of service -->
-            <div class="form-check d-flex justify-content-center mb-3">
-              <input class="form-check-input me-2" type="checkbox" id="form2Example3cg" required/>
-              <label class="form-check-label" for="form2Example3g">
-                I agree all statements in <a href="terms.php" class="text-body" target="_blank"><u>Terms of service</u></a>
-              </label>
             </div>
 
             <!-- submit button -->
@@ -76,10 +68,6 @@
             <div class="d-grid gap-2 mx-auto mb-4">
               <input class="btn btn-secondary btn-sm" type="reset" value="Clear" />
             </div>
-
-            <!-- create account -->
-            <p class="text-center text-muted mb-0">Have already an account? <a href="./login.php"
-                class="fw-bold text-body"><u>Login here</u></a></p>
 
           </form>
         </div>

@@ -58,7 +58,7 @@
           $user_username = $row['user_username'];
           $user_firstName = $row['user_firstName'];
           $user_lastName = $row['user_lastName'];
-          $uesr_email = $row['user_email'];
+          $user_email = $row['user_email'];
           $user_phonenumber = $row['user_phonenumber'];
           $user_status = $row['user_status'];
 
@@ -101,8 +101,51 @@
               ";
           
           echo "
+              <form action='./leaveform_pro.php' method='post' enctype='multipart/form-data'>
+                <h2 class='mb-2 pb-1'>Student Information: </h2>
+                <!-- firstname lastname -->
+                <div class='row'>
+                  <div class='col-md-6 mb-2'>
+                    <div class='form-outline'>
+                      <input type='text' class='form-control form-control-md' value='$user_firstName' disabled/>
+                      <label class='form-label'>First Name</label>
+                    </div>
+                  </div>
+                  <div class='col-md-6 mb-2'>
+                    <div class='form-outline'>
+                      <input type='text' class='form-control form-control-md' value='$user_lastName' disabled/>
+                      <label class='form-label'>Last Name</label>
+                    </div>
+                  </div>
+                </div>
 
-          ";
+                <!-- email phonenumber -->
+                <div class='row'>
+                  <div class='col-md-6 mb-2 pb-2'>
+                    <div class='form-outline'>
+                      <input type='email' name='email' class='form-control form-control-md' value='$user_email' disabled/>
+                      <label class='form-label'>Email</label>
+                    </div>
+                  </div>
+                  <div class='col-md-6 mb-2 pb-2'>
+                    <div class='form-outline'>
+                    <input type='tel' class='form-control form-control-md' value='$user_phonenumber' disabled />
+                    <label class='form-label'>Phone Number</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- username -->
+                <div class='row'>
+                  <div class='col-md-6 mb-2 pb-2'>
+                    <div class='form-outline'>
+                      <input type='text' class='form-control form-control-md' value='$user_username' disabled/>
+                      <label class='form-label'>Username</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              ";
 
           echo "
                       </div>
