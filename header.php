@@ -42,14 +42,14 @@
                                 echo '<li class="nav-item"> 
                                         <a class="nav-link" href="./leaveapprove.php">Approve Leave</a>
                                     </li>';
+                                echo '<li class="nav-item">
+                                        <a class="nav-link" href="./manageusers.php">Manage Users</a>
+                                    </li>';
                             }
                             else if ($_SESSION['user_status'] == 1)
                             {
                                 echo '<li class="nav-item"> 
                                         <a class="nav-link" href="./leaveshow.php">Leave List</a>
-                                    </li>';
-                                echo '<li class="nav-item">
-                                        <a class="nav-link" href="./leaveform.php">Leave Form</a>
                                     </li>';
                             }
                         }

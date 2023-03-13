@@ -9,18 +9,18 @@
       <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Student's Leave Form (student only)</h3>
-          <form action="./leaveform_pro.php">
+          <form action="./leaveform_pro.php" method="post" enctype="multipart/form-data">
               <!-- leave type -->
               <div class="col-md-6 mb-4">
               <h6 class="mb-2 pb-1">Leave Type: </h6>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="leaveType" type="radio" name="inlineRadioOptions" id="Business"
-                  value="option1" checked required/>
+                <input class="form-check-input" name="leaveType" type="radio" id="Business"
+                  value="0" checked required/>
                 <label class="form-check-label" for="Business">Business Leave</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input"  name="leaveType" type="radio" name="inlineRadioOptions" id="Sick"
-                  value="option2" required/>
+                <input class="form-check-input"  name="leaveType" type="radio" id="Sick"
+                  value="1" required/>
                 <label class="form-check-label" for="Sick">Sick Leave</label>
               </div>
             </div>
@@ -59,6 +59,11 @@
                   <label class="form-label" for="endDate">To this date</label>
                 </div>
               </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+              <label for="fileUpload" class="form-label">Attach Picture</label>
+              <input class="form-control form-control-md" name="leave_picture" id="fileUpload" type="file">
             </div>
           
             <!-- Checkbox -->

@@ -19,9 +19,11 @@
         $user_password = $row['user_password'];
         $user_username = $row['user_username'];
         $user_status = $row['user_status'];
+        $user_id = $row['user_id'];
 
         if ($login_password==$user_password)
         {
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_username'] = $user_username;
             $_SESSION['user_status'] = $user_status;
             echo '<meta http-equiv="refresh" content="0; url=./index.php">';
